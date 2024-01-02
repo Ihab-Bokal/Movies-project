@@ -6,21 +6,31 @@
       </div>
       <div class="col-md-8 d-flex align-items-center">
         <div class="card-body">
-          <h2 class="card-title">{{ (movie | async)?.name }}</h2>
-          <h5 class="card-title">{{ (movie | async)?.release_date}}</h5>
-          <p class="card-text">{{ (movie | async)?.description }}</p>
-          <p class="card-text">  The vote average : {{ (movie | async)?.vote_average }}</p>
+        <!--
+          The (movie | async) syntax is used in Angular templates to subscribe to an observable and automatically update
+          the view whenever the observable emits a new value. This is typically used with the async pipe, which is a built-in
+          Angular pipe that subscribes to an observable or a promise and returns the latest value emitted by that observable or
+          the resolved value of the promise.
+        -->
+          <h2 class="card-title">{{ (movie | async)?.title }}</h2>
+          <h5 class="card-title">{{ (movie | async)?.release_date }}</h5>
+          <p class="card-text">{{ (movie | async)?.overview }}</p>
+          <p class="card-text">  La moyenne des votes : {{ (movie | async)?.vote_average }}</p>
+          <p class="card-text">  Ce film etst-il pour adultes ? {{ (movie | async)?.adult }}</p>
+          <p class="card-text">  La langue d'origine de ce film : {{ (movie | async)?.original_language }}</p>
+          <p class="card-text">  La popularité de ce film : {{ (movie | async)?.popularity }}</p>
+          <p class="card-text">  Nombre de votes : {{ (movie | async)?.vote_count }}</p>
         </div>
       </div>
     </div>
   </div>
   <div style="margin-left : 10rem ; margin-top :3rem; ">
-    <h3 style="color: red;">Comments</h3>
-    <input type="text" [(ngModel)]="newComment" style="border-radius:12px" placeholder="Type your comment...">
-    <button style="border: black; background-color:red ; border-radius:12px; margin-left:6px ; " (click)="addComment()">Add </button>
+    <h3 style="color: red;">Commentaires</h3>
+    <input type="text" [(ngModel)]="newComment" style="border-radius:12px" placeholder="Saisissez votre comment">
+    <button style="border: black; background-color:red ; border-radius:12px; margin-left:6px ; " (click)="addComment()">Ajouter</button>
   </div>
   <div  style="width: 60rem; background-color:red; margin-top:12px" *ngIf="comments.length > 0" >
-    <h4>Previous Comments:</h4>
+    <h4>Commentaires:</h4>
     <ul style="color: aliceblue;">
       <li *ngFor="let comment of comments">{{ comment }}</li>
     </ul>

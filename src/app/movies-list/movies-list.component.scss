@@ -47,16 +47,22 @@
 .read-more {
   color: $secondary !important;
   font-weight: 500;
-  margin-left: 17rem;
+  width: 100%;
+  text-align: end;
   display: inline;
   flex-direction: row;
+
+  &:hover {
+    background-color: #fff !important;
+    font-weight: bold;
+  }
 }
 
 .arrow {
   display: inline;
   transform: translateX(0);
   &:hover {
-    animation: translateArrow 2s ease-out;
+    animation: translateArrow 1s ease-out;
     transform: translateX(6px);
   }
 }
