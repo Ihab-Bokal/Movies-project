@@ -1,38 +1,54 @@
-<div class="container align-items-center justify-content-center vh-100 " style="margin-top :4rem" >
-  <div class="card" style="width: 80rem;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img [src]="this.movieService.getMoviePoster((movie | async)!.poster_path)" class="card-img" alt="Movie Poster">
-      </div>
-      <div class="col-md-8 d-flex align-items-center">
-        <div class="card-body">
-        <!--
+<div class="container">
+  <div class="myCard">
+    <div class="card-img">
+      <img [src]="this.movieService.getMoviePoster((movie | async)!.poster_path)" class="card-img" alt="Movie Poster" />
+    </div>
+
+    <div class="card-body">
+      <!--
           The (movie | async) syntax is used in Angular templates to subscribe to an observable and automatically update
           the view whenever the observable emits a new value. This is typically used with the async pipe, which is a built-in
           Angular pipe that subscribes to an observable or a promise and returns the latest value emitted by that observable or
           the resolved value of the promise.
-        -->
-          <h2 class="card-title">{{ (movie | async)?.title }}</h2>
-          <h5 class="card-title">{{ (movie | async)?.release_date }}</h5>
-          <p class="card-text">{{ (movie | async)?.overview }}</p>
-          <p class="card-text">  La moyenne des votes : {{ (movie | async)?.vote_average }}</p>
-          <p class="card-text">  Ce film etst-il pour adultes ? {{ (movie | async)?.adult }}</p>
-          <p class="card-text">  La langue d'origine de ce film : {{ (movie | async)?.original_language }}</p>
-          <p class="card-text">  La popularité de ce film : {{ (movie | async)?.popularity }}</p>
-          <p class="card-text">  Nombre de votes : {{ (movie | async)?.vote_count }}</p>
-        </div>
-      </div>
+      -->
+      <h1 class="mona card-h2">{{ (movie | async)?.title }}</h1>
+      <h3 class="mona card-h3">{{ (movie | async)?.release_date }}</h3>
+      <p class="mona card-text">{{ (movie | async)?.overview }}</p>
+      <br />
+      <p class="mona card-stat">  La moyenne des votes : <span>{{ (movie | async)?.vote_average }}</span></p>
+      <p class="mona card-stat">  La langue d'origine de ce film : <span>{{ (movie | async)?.original_language }}</span> </p>
+      <p class="mona card-stat">  La popularité de ce film : <span>{{ (movie | async)?.popularity }}</span></p>
+      <p class="mona card-stat">  Nombre de votes : <span>{{ (movie | async)?.vote_count }}</span> </p>
+      <p class="mona card-stat">  <span>{{ (movie | async)?.adult ? "Ce film est pour adultes" : "Ce film est conçu pour tous les ages" }}</span> </p>
+
+      <button class="favorite">
+        Ajouter aux favoris
+      </button>
     </div>
   </div>
-  <div style="margin-left : 10rem ; margin-top :3rem; ">
-    <h3 style="color: red;">Commentaires</h3>
-    <input type="text" [(ngModel)]="newComment" style="border-radius:12px" placeholder="Saisissez votre comment">
-    <button style="border: black; background-color:red ; border-radius:12px; margin-left:6px ; " (click)="addComment()">Ajouter</button>
-  </div>
-  <div  style="width: 60rem; background-color:red; margin-top:12px" *ngIf="comments.length > 0" >
-    <h4>Commentaires:</h4>
-    <ul style="color: aliceblue;">
-      <li *ngFor="let comment of comments">{{ comment }}</li>
-    </ul>
+
+  <div class="comment-input-container">
+    <h3 class="comment-title">Commentaires</h3>
+    <div style="display: flex; width: 100%;">
+      <input type="text" [(ngModel)]="newComment" class="comment-input form-control" placeholder="Saisissez votre comment">
+      <button class="submit-comment" (click)="addComment()">Ajouter</button>
+    </div>
+
+    <div class="mb-4" *ngIf="comments.length > 0" >
+      <ul role="list" class="my-4 divide-y divide-gray-100">
+        <li class="flex justify-between gap-x-6 py-5" *ngFor="let comment of comments">
+          <div class="flex min-w-0 gap-x-4">
+            <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <div class="min-w-0 flex-auto">
+              <p class="text-sm font-semibold leading-6 text-gray-900">Username</p>
+              <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ comment }}</p>
+            </div>
+          </div>
+          <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+            <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -18,9 +18,7 @@ import { FormsModule } from '@angular/forms';
   providers : [MovieService]
 })
 
-
-
-export class DetailsMovieComponent implements OnInit {
+export class MovieDetailsComponent implements OnInit {
   movie : Observable<Movie | undefined>;
 
   constructor( private route: ActivatedRoute, public movieService: MovieService) {
