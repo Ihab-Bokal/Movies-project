@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$primary: #33658A;
+$secondary: #F6AE2D;
+$tertiary: #86BBD8;
+$quaternary: #2F4858;
+
+@font-face {
+  font-family: Azonix;
+  src: url(./assets/fonts/Azonix.otf);
+}
+@font-face {
+  font-family: Mona;
+  src: url(./assets/fonts/Mona-Sans.ttf);
+}
+
+.mona {
+  font-family: Mona, Azonix, Papyrus, serif;
+}
+
+html, body {
+  height: 100%;
+  background-color: #f8ffff;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

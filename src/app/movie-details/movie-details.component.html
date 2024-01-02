@@ -1,0 +1,28 @@
+<div class="container align-items-center justify-content-center vh-100 " style="margin-top :4rem" >
+  <div class="card" style="width: 80rem;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img [src]="this.movieService.getMoviePoster((movie | async)!.poster_path)" class="card-img" alt="Movie Poster">
+      </div>
+      <div class="col-md-8 d-flex align-items-center">
+        <div class="card-body">
+          <h2 class="card-title">{{ (movie | async)?.name }}</h2>
+          <h5 class="card-title">{{ (movie | async)?.release_date}}</h5>
+          <p class="card-text">{{ (movie | async)?.description }}</p>
+          <p class="card-text">  The vote average : {{ (movie | async)?.vote_average }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-left : 10rem ; margin-top :3rem; ">
+    <h3 style="color: red;">Comments</h3>
+    <input type="text" [(ngModel)]="newComment" style="border-radius:12px" placeholder="Type your comment...">
+    <button style="border: black; background-color:red ; border-radius:12px; margin-left:6px ; " (click)="addComment()">Add </button>
+  </div>
+  <div  style="width: 60rem; background-color:red; margin-top:12px" *ngIf="comments.length > 0" >
+    <h4>Previous Comments:</h4>
+    <ul style="color: aliceblue;">
+      <li *ngFor="let comment of comments">{{ comment }}</li>
+    </ul>
+  </div>
+</div>

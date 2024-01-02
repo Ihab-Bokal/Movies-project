@@ -1,0 +1,63 @@
+@use "../../styles" as *;
+
+@keyframes translateArrow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(6px);
+  }
+}
+
+.example-card {
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.45);
+  width: 25vw;
+  margin: 2rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+
+}
+
+.movie-poster {
+  height: 15rem;
+  object-fit: cover;
+}
+
+.movie-name {
+  color: $primary;
+  font-size: 1.5rem;
+  justify-self: center;
+  align-self: center;
+  font-weight: bold;
+}
+
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.read-more {
+  color: $secondary !important;
+  font-weight: 500;
+  margin-left: 17rem;
+  display: inline;
+  flex-direction: row;
+}
+
+.arrow {
+  display: inline;
+  transform: translateX(0);
+  &:hover {
+    animation: translateArrow 2s ease-out;
+    transform: translateX(6px);
+  }
+}
+
