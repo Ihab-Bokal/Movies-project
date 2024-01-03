@@ -15,7 +15,6 @@ import {Observable} from "rxjs";
 })
 
 export class AppComponent {
-  title = 'Movies';
   private apiUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=e00128444fea107a774c8d460e7db626';
   private API_TOKEN = "e00128444fea107a774c8d460e7db626";
   private apiUrl1 = 'http://localhost:8080';
@@ -33,8 +32,6 @@ export class AppComponent {
   getImageUrl(poster_path: string){
     return 'https://image.tmdb.org/t/p/w500' + poster_path
   }
-
-
 
   // postClient(clt:User): Observable<boolean> {
   //   return this.http.post<boolean>(`${this.apiUrl1}/user/saveUser`, clt);
