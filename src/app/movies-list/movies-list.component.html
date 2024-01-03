@@ -1,3 +1,38 @@
+<nav class="bg-gray-800">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-shrink-0 items-center">
+          <img class="h-11 w-auto" src="../../assets/images/logo.png" alt="Your Company">
+        </div>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <a href="#" class="azonix bg-gray-900 text-white rounded-md px-3 py-3 text-sm font-medium" aria-current="page">Dashboard</a>
+          </div>
+        </div>
+
+        <!--
+          Search bar
+        -->
+        <div class="relative rounded-md shadow-sm lg:ml-96 sm:ml-10">
+          <div style="display: flex">
+            <input #filter type="text" name="movieFilter" id="movieFilter" class="azonix block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="">
+            <button type="button" class="search-btn" (click)="filterMovies(filter.value)" data-mdb-ripple-init>Chercher</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      <a href="#" class="azonix bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+    </div>
+  </div>
+</nav>
+
+
 <div class="mona movies-container" >
   <mat-card class="example-card d-grid" *ngFor="let movie of moviesFilteredList" [routerLink]="['/detail/',movie.id]">
     <img class="movie-poster" mat-card-image [src]="this.getMovieservice().getMoviePoster(this.movie.poster_path)" alt={{movie.title}} />
