@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class MovieService {
   constructor(private http: HttpClient) { }
-
   apikey = "e00128444fea107a774c8d460e7db626";
 
   getPopularMoviesById(id: number): Observable<any> {

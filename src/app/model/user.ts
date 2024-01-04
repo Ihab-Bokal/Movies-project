@@ -13,6 +13,10 @@ class User {
     this._secondName = secondName;
   }
 
+  registerUser() {
+
+  }
+
   get email(): string {
     return this._email;
   }

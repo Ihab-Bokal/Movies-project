@@ -22,15 +22,16 @@ export class MovieDetailsComponent implements OnInit {
   movie : Observable<Movie | undefined>;
   private apiUrl1 = 'http://localhost:8080';
   is_favorite: boolean= false;
+  filmId = 0;
 
   constructor( private route: ActivatedRoute, public movieService: MovieService, private http: HttpClient) {
     const filmId = this.route.snapshot.params['id'];
+    this.filmId = filmId
     this.movie  = this.movieService.getPopularMoviesById(filmId);
   }
 
-  public makeFavorite(): boolean {
-    console.log(true)
-    return this.is_favorite = true
+  public toggleFavorite(): boolean {
+    return this.is_favorite = !this.is_favorite
   }
 
   ngOnInit() {
@@ -51,11 +52,11 @@ export class MovieDetailsComponent implements OnInit {
     }
   }
 
-  getComment(id_film:number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.apiUrl1}/Commentaire/commentaires?id=${id_film}`);
+  getComments(id_film:number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.apiUrl1}/Commentaire/find/?id=${id_film}`);
   }
 
   postComment(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(`${this.apiUrl1}/comment/postComment`, comment);
+    return this.http.post<Comment>(`${this.apiUrl1}/Commentaire/add`, comment);
   }
 }

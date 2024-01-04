@@ -46,7 +46,7 @@
       <p class="mona card-stat">  Nombre de votes : <span>{{ (movie | async)?.vote_count }}</span> </p>
       <p class="mona card-stat">  <span>{{ (movie | async)?.adult ? "Ce film est pour adultes" : "Ce film est conçu pour tous les ages" }}</span> </p>
 
-      <button class="favorite" (click)="makeFavorite()">
+      <button class="favorite" (click)="toggleFavorite()">
         Ajouter aux favoris
       </button>
     </div>

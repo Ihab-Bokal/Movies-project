@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {HttpClient} from "@angular/common/http";
 
 // @ts-ignore
 @Component({
@@ -10,8 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login-form.component.scss'
 })
 
-
 export class LoginFormComponent implements AfterViewInit {
+  constructor(http: HttpClient) {}
 
   ngAfterViewInit() {
     const signUpButton = document.getElementById('signUp');
